@@ -160,13 +160,11 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
 
   const onToken = (token) => {
     setStripeToken(token);
-    console.log(stripeToken);
   };
   useEffect(() => {
     const makeRequest = async () => {
@@ -175,14 +173,12 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        navigate("/success", {
-          stripeData: res.data,
-          products: cart,
-        });
+        navigate("/success", { state: { data: res.data } });
       } catch {}
     };
     stripeToken && makeRequest();
-  }, [stripeToken, cart.total, navigate]);
+  }, [navigate, stripeToken, cart.total]);
+
   return (
     <Container>
       <Navbar />

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
-const cors = require("cors");
 
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
@@ -11,12 +10,10 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
+const cors = require("cors");
 
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connection success"))
   .catch((err) => {
     console.log(err);
