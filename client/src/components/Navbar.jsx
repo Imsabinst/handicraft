@@ -4,7 +4,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 
 import styled from "styled-components";
-import { mobile } from "../Responsive";
+import { mobile } from "./Responsive";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 

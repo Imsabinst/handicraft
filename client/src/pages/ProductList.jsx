@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-import Announcement from "../../components/announcement";
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar";
-import Newsletter from "../../components/newsletter";
-import PopularProducts from "../../components/products";
-import { mobile } from "../../components/Responsive";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
+import Products from "../components/Products";
+
+import { mobile } from "../components/Responsive";
 
 const Container = styled.div``;
 
@@ -42,44 +43,40 @@ const Option = styled.option``;
 
 const ProductList = () => {
   const location = useLocation();
-  const category = location.pathname.split("/")[2];
+  const cat = location.pathname.split("/")[2];
 
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
   const handleFilters = (e) => {
     const value = e.target.value;
-    setFilters({
-      ...filters,
-      [e.target.name]: value,
-    });
+    setFilters({ ...filters, [e.target.name]: value });
   };
 
   return (
     <Container>
       <Navbar />
       <Announcement />
-      <Title>{category}</Title>
+      <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="types" onChange={handleFilters}>
-            <Option disabled>Types</Option>
-            {/*  <Option>SINGING BOWLS</Option>
-            <Option>GONGS</Option>
-            <Option>TINGSA MEDITATION CUSHION THANGKA / WALL HANGING</Option>
-            <Option>
-              RITUAL ITEM INCENSE / BURNER & HOLDER STATUES/ MASK NEPALI
-            </Option>
-            <Option>CULTURAL ITEM</Option>
-            <Option>mask</Option> */}
-
-            <Option>statue</Option>
-            <Option>wooden Carving</Option>
-            <Option>mask</Option>
-            <Option>woodworking</Option>
-            <Option>sculpture</Option>
-            <Option>pottery</Option>
+          {/* <Select name="color" onChange={handleFilters}>
+            <Option disabled>Color</Option>
+            <Option>white</Option>
+            <Option>black</Option>
+            <Option>red</Option>
+            <Option>blue</Option>
+            <Option>yellow</Option>
+            <Option>green</Option>
+          </Select> */}
+          <Select name="size" onChange={handleFilters}>
+            <Option disabled>Size</Option>
+            <Option>XS</Option>
+            <Option>S</Option>
+            <Option>Md</Option>
+            <Option>L</Option>
+            <Option>XL</Option>
           </Select>
         </Filter>
         <Filter>
@@ -91,7 +88,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <PopularProducts category={category} filters={filters} sort={sort} />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>

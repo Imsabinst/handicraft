@@ -1,16 +1,16 @@
 import { Add, Remove } from "@material-ui/icons";
 import React, { useState } from "react";
 import styled from "styled-components";
-import Announcement from "../../components/announcement";
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar";
-import Newsletter from "../../components/newsletter";
-import { mobile } from "../../components/Responsive";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
+import { mobile } from "../components/Responsive";
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { publicRequest } from "../../requestUrl";
-import { addProduct } from "../../redux/cartRedux";
+import { publicRequest } from "../requestUrl";
+import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
@@ -152,7 +152,8 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImageContainer>
-          <Image src={product.image} />
+          {/*  <Image src={product.image} /> */}
+          <Image src="/pics/products/pic1.jpg" />
         </ImageContainer>
         <InfoContainer>
           <Title>{product.title}</Title>
@@ -163,7 +164,6 @@ const Product = () => {
               <FilterTitle>Sizes:</FilterTitle>
               <FilterType onChange={(e) => setSize(e.target.value)}>
                 {product.sizes?.map((t) => (
-                  /*   <FilterTypeOption key={t}>{t}</FilterTypeOption> */
                   <Select key={t}>{t}</Select>
                 ))}
               </FilterType>

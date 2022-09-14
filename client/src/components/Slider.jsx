@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { sliderItems } from "../../data";
+import { sliderItems } from "../data";
 
 import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from "@material-ui/icons";
-import { mobile } from "../Responsive";
+import { mobile } from "./Responsive";
 
 const Container = styled.div`
   width: 100%;

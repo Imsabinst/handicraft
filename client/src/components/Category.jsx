@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { mobile } from "../Responsive";
+import { mobile } from "./Responsive";
 
 const Container = styled.div`
   flex: 1;

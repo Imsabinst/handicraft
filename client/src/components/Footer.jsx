@@ -5,7 +5,7 @@ import { Instagram, Twitter, WhatsApp } from "@material-ui/icons";
 import RoomIcon from "@mui/icons-material/Room";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { mobile } from "../Responsive";
+import { mobile } from "./Responsive";
 
 const Container = styled.div`
   display: flex;

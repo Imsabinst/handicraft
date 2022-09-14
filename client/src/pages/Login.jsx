@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import { mobile } from "../../components/Responsive";
-import { login } from "../../redux/apiCalls";
+import { mobile } from "../components/Responsive";
+import { login } from "../redux/apiCalls";
 
 const Container = styled.div``;
 const Logo = styled.div`

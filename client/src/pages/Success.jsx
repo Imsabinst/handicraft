@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { userRequest } from "../../requestUrl";
+import { userRequest } from "../requestUrl";
 
 const Success = () => {
   const location = useLocation();
-  //in Cart.jsx I sent data and cart. Please check that page for the changes.(in video it's only data)
+  console.log(location);
   const data = location.state.stripeData;
   const cart = location.state.cart;
   const currentUser = useSelector((state) => state.user.currentUser);

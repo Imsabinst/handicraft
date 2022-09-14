@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import Product from "../product";
+import Product from "./Product";
 
 const Container = styled.div`
   padding: 20px;
@@ -11,7 +11,8 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const PopularProducts = ({ category, filters, sort }) => {
+const Products = ({ cat, filters, sort }) => {
+  console.log(cat);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -19,18 +20,24 @@ const PopularProducts = ({ category, filters, sort }) => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          category
-            ? `http://localhost:5000/api/products?category=${category}`
+          cat
+            ? `http://localhost:5000/api/products?category=${cat}`
             : "http://localhost:5000/api/products"
         );
+
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     getProducts();
-  }, [category]);
+  }, [cat]);
 
+  console.log(cat, "cat in pop products****");
+  console.log(filters, "filter in pop products***");
+  console.log(sort, "this is sort****");
   useEffect(() => {
-    category &&
+    cat &&
       setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
@@ -38,7 +45,7 @@ const PopularProducts = ({ category, filters, sort }) => {
           )
         )
       );
-  }, [products, category, filters]);
+  }, [products, cat, filters]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -58,8 +65,8 @@ const PopularProducts = ({ category, filters, sort }) => {
 
   return (
     <Container>
-      {category
-        ? filteredProducts.map((item) => <Product item={item} key={item._id} />)
+      {cat
+        ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
             .slice(0, 8)
             .map((item) => <Product item={item} key={item.id} />)}
@@ -67,4 +74,4 @@ const PopularProducts = ({ category, filters, sort }) => {
   );
 };
 
-export default PopularProducts;
+export default Products;

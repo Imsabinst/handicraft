@@ -3,15 +3,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Announcement from "../../components/announcement";
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar";
-import Newsletter from "../../components/newsletter";
-import { mobile } from "../../components/Responsive";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
+import { mobile } from "../components/Responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useState } from "react";
 import { useEffect } from "react";
-import { userRequest } from "../../requestUrl";
+import { userRequest } from "../requestUrl";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -173,11 +173,13 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        navigate("/success", { state: { data: res.data } });
+        navigate("/success", {
+          state: { stripeData: res.data, products: cart },
+        });
       } catch {}
     };
     stripeToken && makeRequest();
-  }, [navigate, stripeToken, cart.total]);
+  }, [navigate, stripeToken, cart.total, cart]);
 
   return (
     <Container>
