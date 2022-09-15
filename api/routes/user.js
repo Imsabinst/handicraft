@@ -6,11 +6,11 @@ const {
 
 const router = require("express").Router();
 
-//CREATE USER
+/* //CREATE USER
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
-  const newProduct = new Produ();
-});
+  const newProduct = new Product();
+}); */
 
 //GET ALL USERS
 router.get("/", verifyTokenAndAdmin, async (req, res) => {

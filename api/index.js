@@ -29,5 +29,5 @@ app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
 app.listen(5000, () => {
-  console.log("Server is running");
+  console.log("Server is running in 5000");
 });
