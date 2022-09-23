@@ -84,7 +84,9 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>CraftCandu</Logo>
+          <Link to={"/"} style={{ textDecoration: "none", color: "#000" }}>
+            <Logo>CraftCandu</Logo>
+          </Link>
         </Center>
         <Right>
           <Link to={`/login`} style={{ textDecoration: "none" }}>
